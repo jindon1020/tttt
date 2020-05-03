@@ -1,0 +1,34 @@
+<view class="index-page">
+  
+  <view class="index-page-bg">
+    <image class="page-bg-img" src="/assets/img/bg.jpg" mode="widthFix"></image>
+  </view>
+  <view class="index-content">
+    <view class="content-top">
+      <view class="user-img-content">
+        <image class="user-img" src="{{!isWeChatAvatarUrl?uploadImg:isWeChatAvatarUrl?userInfo.avatarUrl:''}}"></image>
+        <image class="user-border-img" src="{{borderImg}}"></image>
+      </view>
+      <view class="user-login">
+        <view wx:if="{{!userInfo}}">
+          <button class="click-btn click-login-btn" open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">点击登录</button>
+        </view>
+        <view class="other-btn-con">
+          <button class="click-btn click-upload-btn" wx:if="{{userInfo && !isWeChatAvatarUrl}}" bindtap="changeAvatarUrl">切换微信头像</button>
+          <button class="click-btn click-upload-btn" wx:if="{{!userInfo || isWeChatAvatarUrl}}" bindtap="uploadPhoto">上传本地头像</button>
+          <button class="click-btn click-upload-btn" bindtap="selectBorderImg">选择头像框</button>
+          <button class="click-btn click-upload-btn" bindtap="savePhoto">保存头像</button>
+        </view>
+        
+      </view>
+    </view>
+    <official-account style="position:absolute;bottom:0;left:0;right:0;"></official-account>
+  </view>
+
+</view>
+
+
+<!-- 隐藏式canvas  用于绘制头像 -->
+<view class="hidden-canvas">
+  <canvas canvas-id="canvas" style="width: {{canvas.width}}px;height: {{canvas.height}}px"></canvas>
+</view>

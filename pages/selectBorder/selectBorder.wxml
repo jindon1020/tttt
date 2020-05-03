@@ -1,0 +1,10 @@
+<image class="border-bg-img" mode="widthFix" src="/assets/img/borderBg.jpg"></image>
+<view class="select-border-page">
+  <view class="border-title">
+    <view>点击选择一张你喜欢的头像框啦!</view>
+    <view wx:if="{{title}}">{{title}}</view>
+  </view>
+  <view class="border-img-con" wx:for="{{borderArrImgs}}" wx:for-index="borderImgIndex" wx:key="borderImgIndex" data-url="{{item}}" bindtap="selectBorder">
+    <image class="border-img" src="{{item}}"></image>
+  </view>
+</view>
